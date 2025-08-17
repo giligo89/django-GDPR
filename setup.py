@@ -52,6 +52,7 @@ setup(
         'pyaes>=1.6.1',
         'unidecode',
         'django-choice-enumfields>=1.2.0',
+        'python-magic==0.4.27',
     ],
     zip_safe=False,
 )
