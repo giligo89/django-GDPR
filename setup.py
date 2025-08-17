@@ -47,7 +47,7 @@ setup(
     ],
     install_requires=[
         'django>=2.2,<6.0',
-        'django-chamber>=0.6.6',
+        'django-chamber>=0.7.0',
         'tqdm>=4.28.1',
         'pyaes>=1.6.1',
         'unidecode',
