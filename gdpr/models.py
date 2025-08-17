@@ -1,26 +1,18 @@
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models, transaction
 from django.db.models import Q
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-
 from chamber.models import SmartModel
-
 from typing import TYPE_CHECKING, Iterable, Optional, Type
-
 from enumfields import IntegerEnumField
-
 from .enums import LegalReasonState
 from .loading import purpose_register
-
-
 if TYPE_CHECKING:
     from gdpr.purposes.default import AbstractPurpose
-
 
 class ConsentPurpose(models.Model):
     name = models.CharField(max_length=255, verbose_name=_("Name"))
