@@ -6,7 +6,7 @@ from django.apps import apps
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django.db.models import Model
-from django.utils.encoding import force_text
+force_text = str
 
 from .utils import str_to_class
 
