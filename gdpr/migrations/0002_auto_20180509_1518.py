@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='legalreason',
             name='issued_at',
-            field=models.DateTimeField(default=datetime.datetime(2018, 5, 9, 13, 18, 7, 317147, tzinfo=utc),
+            field=models.DateTimeField(default=datetime.datetime(2018, 5, 9, 13, 18, 7, 317147, tzinfo=timezone.utc),
                                        verbose_name='issued at'),
             preserve_default=False,
         ),
