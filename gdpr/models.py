@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from gdpr.purposes.default import AbstractPurpose
 
 class ConsentPurpose(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
     name = models.CharField(max_length=255, verbose_name=_("Name"))
     slug = models.SlugField(unique=True, verbose_name=_("Slug"))
     description = models.TextField(blank=True, verbose_name=_("Description"))
@@ -29,6 +30,7 @@ class ConsentPurpose(models.Model):
 
 
 class LegalReasonManager(models.Manager):
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
 
     def create_consent(self, purpose_slug: str, source_object, issued_at: Optional[datetime] = None,
                        tag: Optional[str] = None, related_objects: Optional[Iterable[Type[models.Model]]] = None,
@@ -137,6 +139,7 @@ class LegalReasonManager(models.Manager):
 
 
 class LegalReasonQuerySet(models.QuerySet):
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
 
     def filter_expired_retaining_data_in_last_days(self, days=None):
         """
@@ -188,7 +191,9 @@ class LegalReasonQuerySet(models.QuerySet):
 
 
 class LegalReason(SmartModel):
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
     objects = LegalReasonManager.from_queryset(LegalReasonQuerySet)()
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
 
     issued_at = models.DateTimeField(
         verbose_name=_('issued at'),
@@ -283,6 +288,7 @@ class LegalReason(SmartModel):
 
 
 class LegalReasonRelatedObject(SmartModel):
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
     legal_reason = models.ForeignKey(
         LegalReason,
         verbose_name=_('legal reason'),
@@ -319,6 +325,7 @@ class LegalReasonRelatedObject(SmartModel):
 
 
 class AnonymizedDataQuerySet(models.QuerySet):
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
 
     def filter_source_instance_active(self, source_object):
         return self.filter(
