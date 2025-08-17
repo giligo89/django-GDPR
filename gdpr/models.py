@@ -22,6 +22,20 @@ if TYPE_CHECKING:
     from gdpr.purposes.default import AbstractPurpose
 
 
+class ConsentPurpose(models.Model):
+    name = models.CharField(max_length=255, verbose_name=_("Name"))
+    slug = models.SlugField(unique=True, verbose_name=_("Slug"))
+    description = models.TextField(blank=True, verbose_name=_("Description"))
+    is_consent_required = models.BooleanField(default=True, verbose_name=_("Is Consent Required"))
+
+    class Meta:
+        verbose_name = _("Consent Purpose")
+        verbose_name_plural = _("Consent Purposes")
+
+    def __str__(self):
+        return self.name
+
+
 class LegalReasonManager(models.Manager):
 
     def create_consent(self, purpose_slug: str, source_object, issued_at: Optional[datetime] = None,
