@@ -30,7 +30,6 @@ class ConsentPurpose(models.Model):
 
 
 class LegalReasonManager(models.Manager):
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
 
     def create_consent(self, purpose_slug: str, source_object, issued_at: Optional[datetime] = None,
                        tag: Optional[str] = None, related_objects: Optional[Iterable[Type[models.Model]]] = None,
@@ -139,7 +138,6 @@ class LegalReasonManager(models.Manager):
 
 
 class LegalReasonQuerySet(models.QuerySet):
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
 
     def filter_expired_retaining_data_in_last_days(self, days=None):
         """
@@ -370,6 +368,8 @@ class AnonymizedData(SmartModel):
         blank=True,
         on_delete=models.SET_NULL
     )
+
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created At"))
 
     class Meta:
         verbose_name = _('anonymized data')
