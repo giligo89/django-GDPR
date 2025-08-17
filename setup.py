@@ -28,6 +28,9 @@ setup(
         'Framework :: Django :: 1.11',
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
+        'Framework :: Django :: 5.0',
+        'Framework :: Django :: 5.1',
+        'Framework :: Django :: 5.2',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
@@ -39,7 +42,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-        'django>=2.2,<4.0',
+        'django>=2.2,<6.0',
         'django-chamber>=0.6.6',
         'tqdm>=4.28.1',
         'pyaes>=1.6.1',
